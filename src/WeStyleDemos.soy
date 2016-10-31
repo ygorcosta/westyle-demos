@@ -1,0 +1,316 @@
+{namespace WeStyleDemos}
+
+/**
+ * @param scaleValueChanged
+ * @param tooltipAlignElementChanged
+ */
+{template .render}
+	
+	<div class="content">
+		{call Sidebar.render /}
+
+		<div class="sidebar-offset">
+
+			<div class="container-hybrid-half">
+
+				<div class="row">
+					<div class="content-header">
+						<div class="header-title">
+							Metal Components + WeStyle
+						</div>
+					</div>
+				</div>
+
+				<div class="content-body">
+					<section id="section-dropdown" class="row">
+						<div class="col-xs-16">
+							<h3 class="content-body-title">Dropdowns</h3>
+						</div>
+						<div class="col-xs-5">
+							{call .dropdownSettings /}
+						</div>
+						<div class="col-xs-5">
+							{call .dropdownFilter /}
+						</div>
+						<div class="col-xs-5">
+							{call .dropdownConfirmation }
+								{param title: 'Delete Variable' /}
+								{param subtitle: 'Are your sure you want do delete this variable?' /}
+							{/call}
+						</div>
+					</section>
+				</div>
+
+				<div class="content-body">
+					<section id="section-progressbar" class="row">
+						<div class="col-xs-16">
+							<h3 class="content-body-title">ProgressBar</h3>
+						</div>
+						<div class="col-xs-16">
+							{call ProgressBar.render}
+								{param barClass: 'progress-bar-success' /}
+								{param min: 0 /}
+								{param max: 5 /}
+								{param value: 3 /}
+							{/call}
+						</div>
+						<div class="col-xs-16">
+							{call ProgressBar.render}
+								{param barClass: 'progress-bar-info' /}
+								{param min: 0 /}
+								{param max: 5 /}
+								{param value: 4 /}
+							{/call}
+						</div>
+						<div class="col-xs-16">
+							{call ProgressBar.render}
+								{param barClass: 'progress-bar-warning' /}
+								{param min: 0 /}
+								{param max: 5 /}
+								{param value: 1 /}
+							{/call}
+						</div>
+						<div class="col-xs-16">
+							{call ProgressBar.render}
+								{param barClass: 'progress-bar-danger' /}
+								{param min: 0 /}
+								{param max: 5 /}
+								{param value: 2 /}
+							{/call}
+						</div>
+					</section>
+				</div>
+
+				<div class="content-body">
+					<section id="section-select" class="row">
+						<div class="col-xs-16">
+							<h3 class="content-body-title">Select</h3>
+						</div>
+						<div class="col-xs-16">
+							{call Select.render}
+								{param arrowClass: 'icon-16-arrow-down-short' /}
+								{param buttonClass: 'btn btn-default btn-block' /}
+								{param hiddenInputName: 'browser' /}
+								{param items: ['Chrome', 'Safari', 'Firefox', 'Internet Explorer', 'Opera'] /}
+								{param ref: 'browserSelector' /}
+								{param values: ['chrome', 'safari', 'firefox', 'internet-explorer', 'opera'] /}
+								{param selectedIndex: 0 /}
+							{/call}
+						</div>
+						<div class="col-xs-16">
+							{let $item1 kind="html"}
+								<img src="https://avatars.githubusercontent.com/u/19154228?v=3" width="24" height="24"> ygorcosta
+							{/let}
+							{let $item2 kind="html"}
+								<img src="https://avatars.githubusercontent.com/u/10002920?v=3" width="24" height="24"> wedeploy
+							{/let}
+							{call Select.render}
+								{param arrowClass: 'icon-16-arrow-down-short' /}
+								{param buttonClass: 'btn btn-default btn-block' /}
+								{param hiddenInputName: 'githubUser' /}
+								{param items: [$item1, $item2] /}
+								{param ref: 'githubRepository' /}
+								{param values: ['1', '2'] /}
+								{param selectedIndex: 0 /}
+							{/call}
+						</div>
+						<div class="col-xs-16">
+							{let $selectDown1 kind="html"}
+								<span class="none"><span class="avatar avatar-white avatar-squared"><span class="icon-16-house"></span></span>none</span>
+							{/let}
+							{let $selectDown2 kind="html"}
+								<img src="http://api.dashboard.wedeploy.com/static/registry/wedeploy-hosting/icon.png" width="36" height="36">images
+							{/let}
+							{call Select.render}
+								{param elementClasses: 'select-large' /}
+								{param arrowClass: 'icon-16-arrow-down-short' /}
+								{param buttonClass: 'btn btn-default btn-block' /}
+								{param hiddenInputName: 'githubUser' /}
+								{param items: [$selectDown1, $selectDown2] /}
+								{param ref: 'homeContainer' /}
+								{param values: ['1', '2'] /}
+								{param selectedIndex: 0 /}
+							{/call}
+						</div>
+					</section>
+				</div>
+
+				<div class="content-body">
+					<section id="section-tooltip" class="row">
+						<div class="col-xs-16">
+							<h3 class="content-body-title">Tooltip</h3>
+						</div>
+
+						/*<div class="col-xs-4">
+							<li class="activity-item">
+								<div class="hidden" id="tooltip-service-activity-bardeen74">
+									<div class="activity-item activity-item-tooltip">
+										<div class="item-label">
+											<div class="item-label__title">
+												<span class="message">Deploy was successful <span class="label label-default">68cb7656</span></span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="item-status">
+									<div class="avatar-icon avatar-medium avatar-white avatar-squared show-custom-tooltip" data-containerid="activity-bardeen74">
+										<span class="icon-16-cloud"></span>
+									</div>
+								</div>
+								<div class="item-avatar">
+									<span class="avatar-initials avatar-we avatar-success">We</span>
+								</div>
+								<div class="item-label">
+									<div class="item-label__title">
+										<span class="message">
+										<span>Deploy was successful </span>
+										<a href="https://689062d3b5082e40ae3880a30dbfb639cb200275@github.com/ygorcosta/imgs/commit/68cb7656" target="_blank" class="label label-default">68cb7656</a></span>
+									</div>
+									<div class="item-label__subtitle" style="visibility: visible;">
+										<span class="time" data-time="1477598745174">21h</span>
+										<span class="bullet">•</span><a href="/projects/bardeen74/logs" class="link link-theme">View logs</a>
+									</div>
+								</div>
+							</li>
+						</div>*/
+
+						<div class="col-xs-4">
+							<h3 class="content-body-title top-2b">Home Service<span class="icon-12-info show-tooltip icon-info" alt="Select the service that will respond to requests made on project main domain."></span></h3>
+						</div>
+					</section>
+				</div>
+
+				<div class="content-body">
+					<section id="section-tooltip" class="row">
+						<div class="col-xs-16">
+							<h3 class="content-body-title">Slider</h3>
+						</div>
+						<div class="col-xs-16">
+							{call Slider.render}
+								{param elementClasses: 'hidden-xs hidden-sm' /}
+								{param events: ['valueChanged': $scaleValueChanged] /}
+								{param max: 5 /}
+								{param value: 1 /}
+							{/call}
+						</div>
+					</section>
+				</div>
+
+				<div class="content-body">
+					<section id="section-tooltip" class="row">
+						<div class="col-xs-16">
+							<h3 class="content-body-title">Input Matrix</h3>
+						</div>
+						<div class="col-xs-16">
+							{call InputMatrix.render }
+								{param elementClasses: 'customDomain' /}
+								{param fieldsConfig: [
+									['label': '', 'name': 'customDomains', 'placeholder': 'myproject.com', 'isArray': true, 'maxLength' : 263, 'autocomplete' : false]
+								] /}
+							{/call}
+						</div>
+					</section>
+				</div>
+				
+			</div> //end container-hybrid
+		</div>//end sidebar-offset
+	</div>//end content
+
+	{call Tooltip.render}
+		{param elementClasses: 'fade' /}
+		{param events: ['alignElementChanged': $tooltipAlignElementChanged] /}
+		{param ref: 'tooltip' /}
+		{param selector: '.show-tooltip' /}
+		{param visible: false /}
+	{/call}
+		
+{/template}
+
+/**
+ */
+{template .dropdownSettings}
+	{call Dropdown.render}
+		{param elementClasses: 'dropdown-settings' /}
+		{param header kind="html"}
+			<button class="btn-icon icon-16-ellipsis" data-onclick="toggle" type="button"></button>
+		{/param}
+		{param body kind="html"}
+			<li>
+				<a href="javascript:;">
+					<span class="icon-12-spinner-double-arrow"></span>Restart Service
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<span class="icon-12-arrow-increase"></span>Scale Containers
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<span class="icon-12-overlap"></span>Copy Service URL
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<span class="icon-12-house"></span>Set as Home Service
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<span class="icon-12-trash"></span>Delete Service
+				</a>
+			</li>
+		{/param}
+	{/call}
+{/template}
+
+/**
+ */
+{template .dropdownFilter}
+	{call Dropdown.render}
+		{param elementClasses: 'dropdown-filter' /}
+		{param header kind="html"}
+			<button class="btn btn-default" data-onclick="toggle" type="button">
+				Alphanumeric<span class="icon-12-arrow-down-short"></span>
+			</button>
+		{/param}
+		{param body kind="html"}
+			<li>
+				<a href="javascript:;">
+					Last Activity
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					Newest
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;">
+					Alphanumeric
+				</a>
+			</li>
+		{/param}
+	{/call}
+{/template}
+
+/**
+ * @param title
+ * @param subtitle
+ */
+{template .dropdownConfirmation}
+	{call Dropdown.render}
+		{param elementClasses: 'dropdown-confirmation' /}
+		{param header kind="html"}
+			<button class="btn btn-default" data-onclick="toggle" type="button">
+				<span class="icon-12-trash"></span>
+			</button>
+		{/param}
+		{param body kind="html"}
+			<h3>{$title}</h3>
+			<p>{$subtitle}</p>
+			<button class="btn btn-default">Cancel</button>
+			<button class="btn btn-danger">Delete</button>
+		{/param}
+	{/call}
+{/template}

@@ -1,0 +1,27 @@
+{	
+	"name": "westyle-demos",
+	"version": "0.0.1",
+	"description": "WeStyle Demos",
+	"license": "BSD",
+	"repository": "ygorcosta/westyle-demos",
+	"engines": {
+		"node": ">=0.12.0",
+		"npm": ">=3.0.0"
+	},
+	"scripts": {
+		"build": "gulp build",
+		"test": "gulp test"
+	},
+	"dependencies": {
+		"metal-components": "^2.0.0",
+		"metal-input-matrix": "^2.0.2",
+		"metal-soy": "^2.0.0",
+		"metal-toast": "^1.0.2",
+		"westyle": "wedeploy/westyle#master"
+	},
+	"devDependencies": {
+		"gulp": "^3.8.11",
+		"gulp-metal": "^1.7.5"
+	}
+	
+}
