@@ -6734,6 +6734,7 @@ button.close {
     width: 20px;
     border-radius: 4px;
     opacity: 1;
+    outline: 0;
     width: 60px;
     height: 60px;
     background: rgba(14, 20, 26, 0.05);
@@ -6760,8 +6761,18 @@ button.close {
       width: 100%;
       margin-right: 0;
       margin-bottom: 12px; } }
-  .input-matrix.input-matrix--inline .input-matrix-fields-left .form-group .help-block {
-    display: none; }
+
+.input-matrix .input-matrix-fields {
+  margin-bottom: 12px; }
+
+.input-matrix .input-matrix-fields .help-block {
+  display: none; }
+
+.input-matrix.has-validation .input-matrix-fields {
+  margin-bottom: 0; }
+
+.input-matrix.has-validation .input-matrix-fields .help-block {
+  display: block; }
 
 .progress {
   height: 8px;

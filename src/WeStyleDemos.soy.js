@@ -241,7 +241,7 @@ function $render(opt_data, opt_ignored, opt_ijData) {
                 'class', 'col-xs-16');
               ie_open('h3', null, null,
                   'class', 'content-body-title');
-                itext('Input Matrix - 1 fiedl');
+                itext('Input Matrix - 1 field');
               ie_close('h3');
             ie_close('div');
             ie_open('div', null, null,
@@ -252,7 +252,7 @@ function $render(opt_data, opt_ignored, opt_ijData) {
                 'class', 'col-xs-16');
               ie_open('h3', null, null,
                   'class', 'content-body-title');
-                itext('Input Matrix - 2 fiedls');
+                itext('Input Matrix - 2 fields');
               ie_close('h3');
             ie_close('div');
             ie_open('div', null, null,
