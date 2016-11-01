@@ -1488,7 +1488,7 @@ pre {
   padding: 0 20px;
   margin: 0 auto; }
 
-.col-flex-row-left-start {
+.col-flex-row-left-start, .input-matrix .input-matrix-fields {
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
@@ -1496,7 +1496,7 @@ pre {
   flex-wrap: nowrap;
   align-items: flex-start; }
 
-.col-flex-row-left-center {
+.col-flex-row-left-center, .input-matrix.input-matrix--inline .input-matrix-fields-left {
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
@@ -2638,11 +2638,15 @@ input[type="button"].btn-block {
 .btn-primary {
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out; }
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(14, 20, 26, 0.8);
+  color: #fff; }
   .btn-primary:hover, .btn-primary:focus, .btn-primary.focus {
-    background-color: rgba(0, 212, 106, 0.3); }
+    background-color: rgba(14, 20, 26, 0.6);
+    color: #fff; }
   .btn-primary:active:hover, .btn-primary:active:focus, .btn-primary:active.focus, .btn-primary.active:hover, .btn-primary.active:focus, .btn-primary.active.focus {
-    background-color: rgba(0, 212, 106, 0.3); }
+    background-color: rgba(14, 20, 26, 0.6);
+    color: #fff; }
 
 .btn-success {
   -webkit-transition: all 0.3s ease-in-out;
@@ -6711,13 +6715,53 @@ button.close {
 .input-matrix .input-matrix-fields .input-matrix-fields-left {
   position: relative;
   left: 0;
-  z-index: 10; }
+  z-index: 10;
+  width: 100%;
+  flex-grow: 1; }
 
 .input-matrix .input-matrix-fields .input-matrix-fields-right {
-  position: absolute;
-  right: 20px;
-  top: 19px;
-  z-index: 20; }
+  position: relative;
+  z-index: 20;
+  margin: 0 0 0 12px;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0; }
+  .input-matrix .input-matrix-fields .input-matrix-fields-right .close {
+    -webkit-transition: background 0.3s ease-in-out;
+    -o-transition: background 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
+    text-align: center;
+    width: 20px;
+    border-radius: 4px;
+    opacity: 1;
+    width: 60px;
+    height: 60px;
+    background: rgba(14, 20, 26, 0.05);
+    color: rgba(14, 20, 26, 0.4); }
+    .input-matrix .input-matrix-fields .input-matrix-fields-right .close:hover {
+      background: rgba(0, 212, 106, 0.1);
+      color: #00d46a; }
+
+.input-matrix.input-matrix--inline .input-matrix-fields {
+  margin-bottom: 12px; }
+
+@media (max-width: 960px) {
+  .input-matrix.input-matrix--inline .input-matrix-fields-left {
+    flex-wrap: wrap;
+    margin-bottom: 12px; } }
+
+.input-matrix.input-matrix--inline .input-matrix-fields-left .form-group {
+  width: 50%;
+  margin-right: 12px; }
+  .input-matrix.input-matrix--inline .input-matrix-fields-left .form-group:last-child {
+    margin-right: 0; }
+  @media (max-width: 960px) {
+    .input-matrix.input-matrix--inline .input-matrix-fields-left .form-group {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 12px; } }
+  .input-matrix.input-matrix--inline .input-matrix-fields-left .form-group .help-block {
+    display: none; }
 
 .progress {
   height: 8px;

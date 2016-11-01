@@ -241,20 +241,29 @@ function $render(opt_data, opt_ignored, opt_ijData) {
                 'class', 'col-xs-16');
               ie_open('h3', null, null,
                   'class', 'content-body-title');
-                itext('Input Matrix');
+                itext('Input Matrix - 1 fiedl');
               ie_close('h3');
             ie_close('div');
             ie_open('div', null, null,
                 'class', 'col-xs-16');
-              $templateAlias5({elementClasses: 'customDomain', fieldsConfig: [{label: '', name: 'customDomains', placeholder: 'myproject.com', isArray: true, maxLength: 263, autocomplete: false}]}, null, opt_ijData);
+              $templateAlias5({fieldsConfig: [{label: '', name: 'customDomains', placeholder: 'myproject.com', isArray: true, maxLength: 263, autocomplete: 'off'}]}, null, opt_ijData);
+            ie_close('div');
+            ie_open('div', null, null,
+                'class', 'col-xs-16');
+              ie_open('h3', null, null,
+                  'class', 'content-body-title');
+                itext('Input Matrix - 2 fiedls');
+              ie_close('h3');
+            ie_close('div');
+            ie_open('div', null, null,
+                'class', 'col-xs-16');
+              $templateAlias5({elementClasses: 'input-matrix--inline', fieldsConfig: [{label: '', name: 'key', placeholder: 'Key', isArray: true, maxLength: 255, autocomplete: false}, {label: '', name: 'value', placeholder: 'Value', isArray: true, maxLength: 255, autocomplete: false}]}, null, opt_ijData);
             ie_close('div');
           ie_close('section');
         ie_close('div');
       ie_close('div');
     ie_close('div');
-    itext('//end sidebar-offset');
   ie_close('div');
-  itext('//end content');
   $templateAlias6({elementClasses: 'fade', events: {alignElementChanged: opt_data.tooltipAlignElementChanged}, ref: 'tooltip', selector: '.show-tooltip', visible: false}, null, opt_ijData);
 }
 exports.render = $render;
@@ -271,13 +280,13 @@ if (goog.DEBUG) {
  * @suppress {checkTypes}
  */
 function $dropdownSettings(opt_data, opt_ignored, opt_ijData) {
-  var param95 = function() {
+  var param98 = function() {
     ie_void('button', null, null,
         'class', 'btn-icon icon-16-ellipsis',
         'data-onclick', 'toggle',
         'type', 'button');
   };
-  var param97 = function() {
+  var param100 = function() {
     ie_open('li');
       ie_open('a', null, null,
           'href', 'javascript:;');
@@ -319,7 +328,7 @@ function $dropdownSettings(opt_data, opt_ignored, opt_ijData) {
       ie_close('a');
     ie_close('li');
   };
-  $templateAlias7({elementClasses: 'dropdown-settings', header: param95, body: param97}, null, opt_ijData);
+  $templateAlias7({elementClasses: 'dropdown-settings', header: param98, body: param100}, null, opt_ijData);
 }
 exports.dropdownSettings = $dropdownSettings;
 if (goog.DEBUG) {
@@ -335,7 +344,7 @@ if (goog.DEBUG) {
  * @suppress {checkTypes}
  */
 function $dropdownFilter(opt_data, opt_ignored, opt_ijData) {
-  var param102 = function() {
+  var param105 = function() {
     ie_open('button', null, null,
         'class', 'btn btn-default',
         'data-onclick', 'toggle',
@@ -345,7 +354,7 @@ function $dropdownFilter(opt_data, opt_ignored, opt_ijData) {
           'class', 'icon-12-arrow-down-short');
     ie_close('button');
   };
-  var param104 = function() {
+  var param107 = function() {
     ie_open('li');
       ie_open('a', null, null,
           'href', 'javascript:;');
@@ -365,7 +374,7 @@ function $dropdownFilter(opt_data, opt_ignored, opt_ijData) {
       ie_close('a');
     ie_close('li');
   };
-  $templateAlias7({elementClasses: 'dropdown-filter', header: param102, body: param104}, null, opt_ijData);
+  $templateAlias7({elementClasses: 'dropdown-filter', header: param105, body: param107}, null, opt_ijData);
 }
 exports.dropdownFilter = $dropdownFilter;
 if (goog.DEBUG) {
@@ -381,7 +390,7 @@ if (goog.DEBUG) {
  * @suppress {checkTypes}
  */
 function $dropdownConfirmation(opt_data, opt_ignored, opt_ijData) {
-  var param109 = function() {
+  var param112 = function() {
     ie_open('button', null, null,
         'class', 'btn btn-default',
         'data-onclick', 'toggle',
@@ -390,7 +399,7 @@ function $dropdownConfirmation(opt_data, opt_ignored, opt_ijData) {
           'class', 'icon-12-trash');
     ie_close('button');
   };
-  var param111 = function() {
+  var param114 = function() {
     ie_open('h3');
       var dyn0 = opt_data.title;
       if (typeof dyn0 == 'function') dyn0(); else if (dyn0 != null) itext(dyn0);
@@ -408,7 +417,7 @@ function $dropdownConfirmation(opt_data, opt_ignored, opt_ijData) {
       itext('Delete');
     ie_close('button');
   };
-  $templateAlias7({elementClasses: 'dropdown-confirmation', header: param109, body: param111}, null, opt_ijData);
+  $templateAlias7({elementClasses: 'dropdown-confirmation', header: param112, body: param114}, null, opt_ijData);
 }
 exports.dropdownConfirmation = $dropdownConfirmation;
 if (goog.DEBUG) {

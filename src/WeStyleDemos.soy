@@ -199,13 +199,24 @@
 				<div class="content-body">
 					<section id="section-tooltip" class="row">
 						<div class="col-xs-16">
-							<h3 class="content-body-title">Input Matrix</h3>
+							<h3 class="content-body-title">Input Matrix - 1 fiedl</h3>
 						</div>
 						<div class="col-xs-16">
 							{call InputMatrix.render }
-								{param elementClasses: 'customDomain' /}
 								{param fieldsConfig: [
-									['label': '', 'name': 'customDomains', 'placeholder': 'myproject.com', 'isArray': true, 'maxLength' : 263, 'autocomplete' : false]
+									['label': '', 'name': 'customDomains', 'placeholder': 'myproject.com', 'isArray': true, 'maxLength' : 263, 'autocomplete' : 'off']
+								] /}
+							{/call}
+						</div>
+						<div class="col-xs-16">
+							<h3 class="content-body-title">Input Matrix - 2 fiedls</h3>
+						</div>
+						<div class="col-xs-16">
+							{call InputMatrix.render }
+								{param elementClasses: 'input-matrix--inline' /}
+								{param fieldsConfig: [
+									['label': '', 'name': 'key', 'placeholder': 'Key', 'isArray': true, 'maxLength': 255, 'autocomplete': false],
+									['label': '', 'name': 'value', 'placeholder': 'Value', 'isArray': true, 'maxLength': 255, 'autocomplete': false]
 								] /}
 							{/call}
 						</div>
@@ -213,8 +224,8 @@
 				</div>
 				
 			</div> //end container-hybrid
-		</div>//end sidebar-offset
-	</div>//end content
+		</div> //end sidebar-offset
+	</div> //end content
 
 	{call Tooltip.render}
 		{param elementClasses: 'fade' /}
