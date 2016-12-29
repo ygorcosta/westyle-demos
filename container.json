@@ -1,4 +1,4 @@
 {
 	"id": "metal",
-	"type": "wedeploy/hosting:latest"
+	"type": "wedeploy/hosting"
 }
