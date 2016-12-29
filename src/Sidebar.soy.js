@@ -119,7 +119,7 @@ function $render(opt_data, opt_ignored, opt_ijData) {
             'class', 'sidebar-link',
             'href', '#section-input-matrix');
           ie_open('span');
-            itext('Input Matrix');
+            itext('Input-Matrix');
           ie_close('span');
         ie_close('a');
       ie_close('li');

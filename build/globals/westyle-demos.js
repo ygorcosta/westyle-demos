@@ -14048,7 +14048,7 @@ babelHelpers;
       ie_open('li', null, null, 'class', 'sidebar-item sidebar-settings-item');
       ie_open('a', null, null, 'class', 'sidebar-link', 'href', '#section-input-matrix');
       ie_open('span');
-      itext('Input Matrix');
+      itext('Input-Matrix');
       ie_close('span');
       ie_close('a');
       ie_close('li');
@@ -15226,6 +15226,8 @@ babelHelpers;
     var itext = IncrementalDom.text;
     var iattr = IncrementalDom.attr;
 
+    var $templateAlias1 = Soy.getTemplate('Input.incrementaldom', 'render');
+
     /**
      * @param {Object<string, *>=} opt_data
      * @param {(null|undefined)=} opt_ignored
@@ -15235,29 +15237,29 @@ babelHelpers;
      */
     function $render(opt_data, opt_ignored, opt_ijData) {
       var $$temp;
-      ie_open('div', null, null, 'class', 'input-matrix');
+      ie_open('div', null, null, 'class', 'input-matrix ' + (($$temp = opt_data.elementClasses) == null ? '' : $$temp));
       ie_open('div', null, null, 'class', 'input-matrix-labels');
-      var configList7 = opt_data.fieldsConfig;
-      var configListLen7 = configList7.length;
-      for (var configIndex7 = 0; configIndex7 < configListLen7; configIndex7++) {
-        var configData7 = configList7[configIndex7];
+      var configList9 = opt_data.fieldsConfig;
+      var configListLen9 = configList9.length;
+      for (var configIndex9 = 0; configIndex9 < configListLen9; configIndex9++) {
+        var configData9 = configList9[configIndex9];
         ie_open('label', null, null, 'class', 'input-matrix-label');
-        var dyn0 = ($$temp = configData7.label) == null ? '' : $$temp;
+        var dyn0 = ($$temp = configData9.label) == null ? '' : $$temp;
         if (typeof dyn0 == 'function') dyn0();else if (dyn0 != null) itext(dyn0);
         ie_close('label');
       }
       ie_close('div');
-      var fieldObjs__soy10 = opt_data.fields ? opt_data.fields : [[]];
-      var shouldAddRow__soy11 = '';
-      shouldAddRow__soy11 += $shouldAddRow({ fields: ($$temp = fieldObjs__soy10[fieldObjs__soy10.length - 1]) == null ? [] : $$temp, fieldsConfig: opt_data.fieldsConfig }, null, opt_ijData);
-      var rowFieldsList20 = fieldObjs__soy10;
-      var rowFieldsListLen20 = rowFieldsList20.length;
-      for (var rowFieldsIndex20 = 0; rowFieldsIndex20 < rowFieldsListLen20; rowFieldsIndex20++) {
-        var rowFieldsData20 = rowFieldsList20[rowFieldsIndex20];
-        $row({ fieldsConfig: opt_data.fieldsConfig, last: !shouldAddRow__soy11 && rowFieldsIndex20 == fieldObjs__soy10.length - 1, rowFields: rowFieldsData20, rowIndex: rowFieldsIndex20 }, null, opt_ijData);
+      var fieldObjs__soy12 = opt_data.fields ? opt_data.fields : [[]];
+      var shouldAddRow__soy13 = '';
+      shouldAddRow__soy13 += $shouldAddRow({ fields: ($$temp = fieldObjs__soy12[fieldObjs__soy12.length - 1]) == null ? [] : $$temp, fieldsConfig: opt_data.fieldsConfig }, null, opt_ijData);
+      var rowFieldsList23 = fieldObjs__soy12;
+      var rowFieldsListLen23 = rowFieldsList23.length;
+      for (var rowFieldsIndex23 = 0; rowFieldsIndex23 < rowFieldsListLen23; rowFieldsIndex23++) {
+        var rowFieldsData23 = rowFieldsList23[rowFieldsIndex23];
+        $row({ fieldsConfig: opt_data.fieldsConfig, last: !shouldAddRow__soy13 && rowFieldsIndex23 == fieldObjs__soy12.length - 1, rowFields: rowFieldsData23, rowIndex: rowFieldsIndex23, handleInput_: opt_data.handleInput_ }, null, opt_ijData);
       }
-      if (shouldAddRow__soy11 != '') {
-        $row({ fieldsConfig: opt_data.fieldsConfig, last: true, rowFields: [], rowIndex: fieldObjs__soy10.length }, null, opt_ijData);
+      if (shouldAddRow__soy13 != '') {
+        $row({ fieldsConfig: opt_data.fieldsConfig, last: true, rowFields: [], rowIndex: fieldObjs__soy12.length, handleInput_: opt_data.handleInput_ }, null, opt_ijData);
       }
       ie_close('div');
     }
@@ -15274,14 +15276,14 @@ babelHelpers;
      * @suppress {checkTypes}
      */
     function $row(opt_data, opt_ignored, opt_ijData) {
-      ie_open('div', null, null, 'class', 'input-matrix-fields');
+      ie_open('div', null, null, 'class', 'input-matrix-fields', 'data-row', opt_data.rowIndex);
       ie_open('div', null, null, 'class', 'input-matrix-fields-left');
-      var configList37 = opt_data.fieldsConfig;
-      var configListLen37 = configList37.length;
-      for (var configIndex37 = 0; configIndex37 < configListLen37; configIndex37++) {
-        var configData37 = configList37[configIndex37];
-        var index__soy32 = configIndex37;
-        $field(soy.$$assignDefaults({ field: opt_data.rowFields ? opt_data.rowFields[index__soy32] : null, fieldIndex: index__soy32, rowIndex: opt_data.rowIndex }, configData37), null, opt_ijData);
+      var configList44 = opt_data.fieldsConfig;
+      var configListLen44 = configList44.length;
+      for (var configIndex44 = 0; configIndex44 < configListLen44; configIndex44++) {
+        var configData44 = configList44[configIndex44];
+        var index__soy38 = configIndex44;
+        $field(soy.$$assignDefaults({ field: opt_data.rowFields ? opt_data.rowFields[index__soy38] : null, fieldIndex: index__soy38, rowIndex: opt_data.rowIndex, handleInput_: opt_data.handleInput_ }, configData44), null, opt_ijData);
       }
       ie_close('div');
       ie_open('div', null, null, 'class', 'input-matrix-fields-right');
@@ -15308,22 +15310,11 @@ babelHelpers;
      * @suppress {checkTypes}
      */
     function $field(opt_data, opt_ignored, opt_ijData) {
-      var $$temp;
-      var hasError__soy47 = opt_data.field && opt_data.field.error && opt_data.field.error != '';
-      ie_open('div', null, null, 'class', 'form-group ' + (hasError__soy47 ? 'has-error' : ''));
-      var nameSuffix__soy51 = opt_data.isArray ? '[]' : opt_data.rowIndex + 1;
-      ie_open_start('input');
-      iattr('type', 'text');
-      iattr('value', opt_data.field && opt_data.field.value ? opt_data.field.value : '');
-      iattr('class', 'form-control input-matrix-field');
-      iattr('data-field-index', opt_data.fieldIndex);
-      iattr('data-row-index', opt_data.rowIndex);
-      iattr('data-oninput', 'handleInput_');
-      iattr('name', opt_data.name != null ? opt_data.name + nameSuffix__soy51 : '');
-      iattr('placeholder', ($$temp = opt_data.placeholder) == null ? '' : $$temp);
-      $fieldAttrs(opt_data, null, opt_ijData);
-      ie_open_end();
-      ie_close('input');
+      opt_data = opt_data || {};
+      var hasError__soy54 = opt_data.field && opt_data.field.error && opt_data.field.error != '';
+      ie_open('div', null, null, 'class', 'form-group ' + (hasError__soy54 ? 'has-error' : ''));
+      var nameSuffix__soy58 = opt_data.isArray ? '[]' : opt_data.rowIndex + 1;
+      $templateAlias1(soy.$$assignDefaults({ classes: 'form-control input-matrix-field', onInput: opt_data.handleInput_, name: opt_data.name != null ? opt_data.name + nameSuffix__soy58 : '', value: opt_data.field && opt_data.field.value ? opt_data.field.value : '' }, opt_data), null, opt_ijData);
       ie_open('p', null, null, 'class', 'help-block');
       var dyn1 = opt_data.field && opt_data.field.error ? opt_data.field.error : '';
       if (typeof dyn1 == 'function') dyn1();else if (dyn1 != null) itext(dyn1);
@@ -15339,39 +15330,18 @@ babelHelpers;
      * @param {Object<string, *>=} opt_data
      * @param {(null|undefined)=} opt_ignored
      * @param {Object<string, *>=} opt_ijData
-     * @return {void}
-     * @suppress {checkTypes}
-     */
-    function $fieldAttrs(opt_data, opt_ignored, opt_ijData) {
-      opt_data = opt_data || {};
-      if (opt_data.maxLength != null) {
-        iattr('maxlength', opt_data.maxLength);
-      }
-      if (opt_data.autocomplete != null) {
-        iattr('autocomplete', '');
-      }
-    }
-    exports.fieldAttrs = $fieldAttrs;
-    if (goog.DEBUG) {
-      $fieldAttrs.soyTemplateName = 'InputMatrix.fieldAttrs';
-    }
-
-    /**
-     * @param {Object<string, *>=} opt_data
-     * @param {(null|undefined)=} opt_ignored
-     * @param {Object<string, *>=} opt_ijData
      * @return {string}
      * @suppress {checkTypes}
      */
     function $shouldAddRow(opt_data, opt_ignored, opt_ijData) {
       var output = '';
-      var configList84 = opt_data.fieldsConfig;
-      var configListLen84 = configList84.length;
-      for (var configIndex84 = 0; configIndex84 < configListLen84; configIndex84++) {
-        var configData84 = configList84[configIndex84];
-        var index__soy79 = configIndex84;
-        var hasValue__soy80 = opt_data.fields[index__soy79] != null && opt_data.fields[index__soy79].value != null && opt_data.fields[index__soy79].value != '';
-        output += !configData84.disableDuplication && hasValue__soy80 ? 'true' : '';
+      var configList73 = opt_data.fieldsConfig;
+      var configListLen73 = configList73.length;
+      for (var configIndex73 = 0; configIndex73 < configListLen73; configIndex73++) {
+        var configData73 = configList73[configIndex73];
+        var index__soy68 = configIndex73;
+        var hasValue__soy69 = opt_data.fields[index__soy68] != null && opt_data.fields[index__soy68].value != null && opt_data.fields[index__soy68].value != '';
+        output += !configData73.disableDuplication && hasValue__soy69 ? 'true' : '';
       }
       return output;
     }
@@ -15380,14 +15350,12 @@ babelHelpers;
       $shouldAddRow.soyTemplateName = 'InputMatrix.shouldAddRow';
     }
 
-    exports.render.params = ["fields", "fieldsConfig"];
-    exports.render.types = { "fields": "any", "fieldsConfig": "any" };
-    exports.row.params = ["fieldsConfig", "last", "rowFields", "rowIndex"];
-    exports.row.types = { "fieldsConfig": "any", "last": "any", "rowFields": "any", "rowIndex": "any" };
-    exports.field.params = ["isArray", "field", "fieldIndex", "name", "placeholder", "rowIndex"];
-    exports.field.types = { "isArray": "any", "field": "any", "fieldIndex": "any", "name": "any", "placeholder": "any", "rowIndex": "any" };
-    exports.fieldAttrs.params = ["autocomplete", "maxLength"];
-    exports.fieldAttrs.types = { "autocomplete": "any", "maxLength": "any" };
+    exports.render.params = ["elementClasses", "fields", "fieldsConfig", "handleInput_"];
+    exports.render.types = { "elementClasses": "any", "fields": "any", "fieldsConfig": "any", "handleInput_": "any" };
+    exports.row.params = ["fieldsConfig", "handleInput_", "last", "rowFields", "rowIndex"];
+    exports.row.types = { "fieldsConfig": "any", "handleInput_": "any", "last": "any", "rowFields": "any", "rowIndex": "any" };
+    exports.field.params = ["field", "handleInput_", "isArray", "name", "rowIndex"];
+    exports.field.types = { "field": "any", "handleInput_": "any", "isArray": "any", "name": "any", "rowIndex": "any" };
     exports.shouldAddRow.params = ["fields", "fieldsConfig"];
     exports.shouldAddRow.types = { "fields": "any", "fieldsConfig": "any" };
     templates = exports;
@@ -15415,6 +15383,361 @@ babelHelpers;
 'use strict';
 
 (function () {
+  /* jshint ignore:start */
+  var Component = this['metal']['component'];
+  var Soy = this['metal']['Soy'];
+
+  var templates;
+  goog.loadModule(function (exports) {
+
+    // This file was automatically generated from Input.soy.
+    // Please don't edit this file by hand.
+
+    /**
+     * @fileoverview Templates in namespace Input.
+     * @public
+     */
+
+    goog.module('Input.incrementaldom');
+
+    /** @suppress {extraRequire} */
+    var soy = goog.require('soy');
+    /** @suppress {extraRequire} */
+    var soydata = goog.require('soydata');
+    /** @suppress {extraRequire} */
+    goog.require('goog.i18n.bidi');
+    /** @suppress {extraRequire} */
+    goog.require('goog.asserts');
+    /** @suppress {extraRequire} */
+    goog.require('goog.string');
+    var IncrementalDom = goog.require('incrementaldom');
+    var ie_open = IncrementalDom.elementOpen;
+    var ie_close = IncrementalDom.elementClose;
+    var ie_void = IncrementalDom.elementVoid;
+    var ie_open_start = IncrementalDom.elementOpenStart;
+    var ie_open_end = IncrementalDom.elementOpenEnd;
+    var itext = IncrementalDom.text;
+    var iattr = IncrementalDom.attr;
+
+    /**
+     * @param {Object<string, *>=} opt_data
+     * @param {(null|undefined)=} opt_ignored
+     * @param {Object<string, *>=} opt_ijData
+     * @return {void}
+     * @suppress {checkTypes}
+     */
+    function $render(opt_data, opt_ignored, opt_ijData) {
+      opt_data = opt_data || {};
+      if (opt_data.isTogglePassword) {
+        ie_open('div', null, null, 'class', 'has-action-button');
+        $input(soy.$$assignDefaults({ type: opt_data.isShowing_ ? 'text' : 'password' }, opt_data), null, opt_ijData);
+        $togglePassword(opt_data, null, opt_ijData);
+        ie_close('div');
+      } else {
+        $input(opt_data, null, opt_ijData);
+      }
+    }
+    exports.render = $render;
+    if (goog.DEBUG) {
+      $render.soyTemplateName = 'Input.render';
+    }
+
+    /**
+     * @param {Object<string, *>=} opt_data
+     * @param {(null|undefined)=} opt_ignored
+     * @param {Object<string, *>=} opt_ijData
+     * @return {void}
+     * @suppress {checkTypes}
+     */
+    function $input(opt_data, opt_ignored, opt_ijData) {
+      var $$temp;
+      opt_data = opt_data || {};
+      ie_open_start('input');
+      iattr('type', ($$temp = opt_data.type) == null ? 'text' : $$temp);
+      $fieldAttrs(opt_data, null, opt_ijData);
+      ie_open_end();
+      ie_close('input');
+    }
+    exports.input = $input;
+    if (goog.DEBUG) {
+      $input.soyTemplateName = 'Input.input';
+    }
+
+    /**
+     * @param {Object<string, *>=} opt_data
+     * @param {(null|undefined)=} opt_ignored
+     * @param {Object<string, *>=} opt_ijData
+     * @return {void}
+     * @suppress {checkTypes}
+     */
+    function $fieldAttrs(opt_data, opt_ignored, opt_ijData) {
+      var $$temp;
+      opt_data = opt_data || {};
+      iattr('autocomplete', ($$temp = opt_data.autocomplete) == null ? 'on' : $$temp);
+      if (opt_data.classes != null) {
+        iattr('class', opt_data.classes);
+      }
+      if (opt_data.fieldIndex != null) {
+        iattr('data-field-index', opt_data.fieldIndex);
+      }
+      if (opt_data.maxLength != null) {
+        iattr('maxlength', opt_data.maxLength);
+      }
+      if (opt_data.name != null) {
+        iattr('name', opt_data.name);
+      }
+      if (opt_data.onInput != null) {
+        iattr('data-oninput', opt_data.onInput);
+      }
+      if (opt_data.placeholder != null) {
+        iattr('placeholder', opt_data.placeholder);
+      }
+      if (opt_data.readonly != null && opt_data.readonly) {
+        iattr('readonly', '');
+      }
+      if (opt_data.rowIndex != null) {
+        iattr('data-row-index', opt_data.rowIndex);
+      }
+      if (opt_data.value != null) {
+        iattr('value', opt_data.value);
+      }
+    }
+    exports.fieldAttrs = $fieldAttrs;
+    if (goog.DEBUG) {
+      $fieldAttrs.soyTemplateName = 'Input.fieldAttrs';
+    }
+
+    /**
+     * @param {Object<string, *>=} opt_data
+     * @param {(null|undefined)=} opt_ignored
+     * @param {Object<string, *>=} opt_ijData
+     * @return {void}
+     * @suppress {checkTypes}
+     */
+    function $togglePassword(opt_data, opt_ignored, opt_ijData) {
+      ie_open('button', null, null, 'class', 'btn btn-sm btn-primary', 'type', 'button', 'data-onclick', 'toggle');
+      ie_void('span', null, null, 'class', opt_data.isShowing_ ? 'icon-12-eye-off' : 'icon-12-eye');
+      ie_open('div', null, null, 'class', 'btn-tooltip');
+      var dyn0 = opt_data.isShowing_ ? 'Hide' : 'Show';
+      if (typeof dyn0 == 'function') dyn0();else if (dyn0 != null) itext(dyn0);
+      ie_close('div');
+      ie_close('button');
+    }
+    exports.togglePassword = $togglePassword;
+    if (goog.DEBUG) {
+      $togglePassword.soyTemplateName = 'Input.togglePassword';
+    }
+
+    exports.render.params = ["autocomplete", "classes", "fieldIndex", "isShowing_", "isTogglePassword", "maxLength", "name", "onInput", "readonly", "rowIndex", "type", "value"];
+    exports.render.types = { "autocomplete": "any", "classes": "any", "fieldIndex": "any", "isShowing_": "any", "isTogglePassword": "any", "maxLength": "any", "name": "any", "onInput": "any", "readonly": "any", "rowIndex": "any", "type": "any", "value": "any" };
+    exports.input.params = ["type"];
+    exports.input.types = { "type": "any" };
+    exports.fieldAttrs.params = ["autocomplete", "classes", "fieldIndex", "maxLength", "name", "onInput", "placeholder", "readonly", "rowIndex", "value"];
+    exports.fieldAttrs.types = { "autocomplete": "any", "classes": "any", "fieldIndex": "any", "maxLength": "any", "name": "any", "onInput": "any", "placeholder": "any", "readonly": "any", "rowIndex": "any", "value": "any" };
+    exports.togglePassword.params = ["isShowing_"];
+    exports.togglePassword.types = { "isShowing_": "any" };
+    templates = exports;
+    return exports;
+  });
+
+  var Input = function (_Component) {
+    babelHelpers.inherits(Input, _Component);
+
+    function Input() {
+      babelHelpers.classCallCheck(this, Input);
+      return babelHelpers.possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).apply(this, arguments));
+    }
+
+    return Input;
+  }(Component);
+
+  Soy.register(Input, templates);
+  this['metalNamed']['Input'] = this['metalNamed']['Input'] || {};
+  this['metalNamed']['Input']['Input'] = Input;
+  this['metalNamed']['Input']['templates'] = templates;
+  this['metal']['Input'] = templates;
+  /* jshint ignore:end */
+}).call(this);
+'use strict';
+
+(function () {
+	var core = this['metal']['metal'];
+	var templates = this['metal']['Input'];
+	var Component = this['metal']['component'];
+	var Soy = this['metal']['Soy'];
+
+	var Input = function (_Component) {
+		babelHelpers.inherits(Input, _Component);
+
+		function Input() {
+			babelHelpers.classCallCheck(this, Input);
+			return babelHelpers.possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).apply(this, arguments));
+		}
+
+		babelHelpers.createClass(Input, [{
+			key: 'created',
+			value: function created() {
+				this.isShowing_ = this.initialShow;
+
+				if (this.editableWhileVisible) {
+					if (!this.value || this.value && this.valeu === '') {
+						this.isShowing_ = true;
+						this.readonly = false;
+					} else {
+						if (this.isShowing_) {
+							this.readonly = false;
+						} else {
+							this.readonly = true;
+						}
+					}
+				}
+			}
+		}, {
+			key: 'toggle',
+			value: function toggle() {
+				this.isShowing_ = !this.isShowing_;
+
+				if (this.editableWhileVisible) {
+					if (this.isShowing_) {
+						this.readonly = false;
+					} else {
+						this.readonly = true;
+					}
+				}
+			}
+		}]);
+		return Input;
+	}(Component);
+
+	Soy.register(Input, templates);
+
+	Input.STATE = {
+		/**
+   * Defines "autocomplete" html attribute [on/off]
+   * @type {string}
+   * @default 'on'
+   */
+		autocomplete: {
+			validator: core.isString,
+			value: 'on'
+		},
+		/**
+   * Defines which classes this input field should have
+   * @type {string}
+   */
+		classes: {
+			validator: core.isString
+		},
+		/**
+   * Defines if while exposed state, the related field shall be editable
+   * It only works combined with isTogglePassword
+   * @type {boolean}
+   */
+		editableWhileVisible: {
+			validator: core.isBoolean,
+			value: false
+		},
+		/**
+   * Defines the index of the field
+   * @type {number}
+   */
+		fieldIndex: {
+			validator: core.isNumber
+		},
+		/**
+   * Defines if the value will appear as password or not when it starts
+   * It only works combined with isTogglePassword
+   * @type {boolean}
+   * @default false
+   */
+		initialShow: {
+			validator: core.isBoolean,
+			value: false
+		},
+		/**
+   * Defines the internal value that controls the related field logic visibility
+   * @type {boolean}
+   * @default false
+   */
+		isShowing_: {
+			validator: core.isBoolean,
+			value: false,
+			internal: true
+		},
+		/**
+   * Defines if this field has a behavior to hide and show the value
+   * @type {boolean}
+   * @default false
+   */
+		isTogglePassword: {
+			validator: core.isBoolean,
+			value: false
+		},
+		/**
+   * Defines the maximum length for this field.
+   * @type {number}
+   */
+		maxLength: {
+			validator: core.isNumber
+
+		},
+		/**
+   * Defines the function name to 'oninput' event
+   * @type {function}
+   */
+		onInput: {
+			validator: core.isFunction
+		},
+		/**
+   * Defines "name" html attribute
+   * @type {string}
+   */
+		name: {
+			validator: core.isString
+		},
+		/**
+   * Defines "placeholder" html attribute
+   * @type {string}
+   */
+		placeholder: {
+			validator: core.isString
+		},
+		/**
+   * Defines "readonly" html attribute
+   * @type {boolean}
+   */
+		readonly: {
+			validator: core.isBoolean
+		},
+		/**
+   * Defines which row this field belongs to
+   * @type {number}
+   */
+		rowIndex: {
+			validator: core.isNumber
+		},
+		/**
+   * @type {string}
+   * @default 'text'
+   */
+		type: {
+			validator: core.isString,
+			value: 'text'
+		},
+		/**
+   * Defines the current value
+   * @type {string}
+   */
+		value: {
+			validator: core.isString
+		}
+	};
+
+	this['metal']['Input'] = Input;
+}).call(this);
+'use strict';
+
+(function () {
 	var core = this['metal']['metal'];
 	var templates = this['metal']['InputMatrix'];
 	var Component = this['metal']['component'];
@@ -15424,7 +15747,6 @@ babelHelpers;
   * This component automatically adds new fields to guarantee that there will
   * always be an empty field at the end of the list.
   */
-
 	var InputMatrix = function (_Component) {
 		babelHelpers.inherits(InputMatrix, _Component);
 
@@ -15476,6 +15798,7 @@ babelHelpers;
 			value: function handleRemoveClick_(event) {
 				var element = event.delegateTarget;
 				var index = this.convertAttrToInt_(element, 'data-row-index');
+
 				this.fields.splice(index, 1);
 				this.fields = this.fields;
 			}
